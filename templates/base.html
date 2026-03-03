@@ -7,6 +7,21 @@
 </head>
 <body>
     <main class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <div class="flash-messages">
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}" style="padding: 1rem; margin-bottom: 1rem; border-radius: 4px; border: 1px solid
+                    {% if category == 'success' %} #c3e6cb; background-color: #d4edda; color: #155724;
+                    {% elif category == 'danger' %} #f5c6cb; background-color: #f8d7da; color: #721c24;
+                    {% else %} #ffeeba; background-color: #fff3cd; color: #856404; {% endif %}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+
         {% block content %}
         {% endblock %}
     </main>`

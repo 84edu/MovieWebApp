@@ -47,3 +47,10 @@ class DataManager():
             db.session.commit()
             return True
         return False
+
+    def get_user_by_id(self, user_id):
+        """Fetches a single user by their ID, returns None if not found."""
+        return db.session.get(User, user_id)
+
+    def get_movie_by_id(self, movie_id):
+        return db.session.get(Movie, movie_id)
