@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="error-container" style="text-align: center; margin-top: 50px;">
+    <h1>500 - Server error!</h1>
+    <p>Something went wrong on our end. Please try again later.</p>
+    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJpZzR4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/h20lgQ1Ch39eZfAh87/giphy.gif" alt="Confused Travolta" style="width: 300px; border-radius: 10px;">
+    <br><br>
+    <a href="{{ url_for('index') }}" class="btn">Take me back Home</a>
+</div>
+{% endblock %}
