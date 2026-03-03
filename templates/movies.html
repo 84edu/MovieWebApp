@@ -1,10 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+    <h1>Favorite Movies</h1>
+
+    <div class="movie-container">
+        {% if movies %}
+            <ul>
+                {% for movie in movies %}
+                    <li>
+                        <div class="movie-card">
+                            <img src="{{ movie.poster_url }}" alt="{{ movie.title }} Poster" style="width:150px;">
+                            <h3>{{ movie.title }} ({{ movie.year }})</h3>
+                            <p>Directed by: {{ movie.director }}</p>
+
+                            <form action="{{ url_for('update_movie', user_id=user_id, movie_id=movie.id) }}" method="POST" style="display:inline;">
+                                <input type="text" name="title" placeholder="New Title" required>
+                                <button type="submit">Update Title</button>
+                            </form>
+
+                            <form action="{{ url_for('delete_movie', user_id=user_id, movie_id=movie.id) }}" method="POST" style="display:inline;">
+                                <button type="submit" onclick="return confirm('Are you sure you want to delete this movie?')">Delete Movie</button>
+                            </form>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No movies found for this user. Add your first favorite!</p>
+        {% endif %}
+    </div>
+
+    <hr>
+
+    <h2>Add a New Movie</h2>
+    <form action="{{ url_for('user_movies', user_id=user_id) }}" method="POST">
+        <input type="text" name="title" placeholder="Enter Movie Title" required>
+        <button type="submit">Search & Add</button>
+    </form>
+
+    <p><a href="{{ url_for('index') }}">← Back to User List</a></p>
+{% endblock %}
