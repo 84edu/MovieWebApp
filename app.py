@@ -20,11 +20,11 @@ db.init_app(app)
 data_manager = DataManager()
 
 @app.route('/users', methods=['POST'])
-def add_user():
+def create_user():
     user_name = request.form.get('name')
     if user_name:
         data_manager.create_user(user_name)
-    return redirect(url_for('home'))
+    return redirect(url_for('index'))
 
 
 @app.route('/users/<int:user_id>/movies', methods=['GET', 'POST'])
@@ -64,7 +64,7 @@ def delete_movie(user_id, movie_id):
 
 
 @app.route('/')
-def home():
+def index():
     users = data_manager.get_users()
     return render_template('index.html', users=users)
 
