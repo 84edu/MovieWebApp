@@ -81,7 +81,7 @@ def user_movies(user_id):
 
     # GET logic stays simple but clean
     movies = data_manager.get_movies(user_id)
-    return render_template('movies.html', movies=movies, user_id=user_id)
+    return render_template('movies.html', movies=movies, user_id=user_id, user_name=user.name)
 
 
 @app.route('/users/<int:user_id>/movies/<int:movie_id>/update', methods=['POST'])
@@ -128,6 +128,11 @@ def index():
 def users_redirect():
     """SEO-friendly 301 Redirect to the root URL."""
     return redirect(url_for('index'), code=301)
+
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 
 @app.errorhandler(404)

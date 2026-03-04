@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+            <div class="card bg-dark text-white border-info shadow-lg">
+                <div class="card-body p-5">
+                    <h1 class="card-title text-info border-bottom pb-3">
+                        <i class="bi bi-info-circle-fill me-2"></i>About MovieWebApp
+                    </h1>
+
+                    <p class="lead mt-4">
+                        Welcome to <strong>MovieWebApp</strong>, your personal cinema companion.
+                        This platform was designed to bridge the gap between your love for movies and organized data management.
+                    </p>
+
+                    <div class="row mt-5">
+                        <div class="col-md-6">
+                            <h4 class="text-info"><i class="bi bi-lightbulb me-2"></i>The Vision</h4>
+                            <p>To provide a simple yet powerful interface where users can manage their movie collections and instantly get details about any film in history.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-info"><i class="bi bi-cpu me-2"></i>The Tech Stack</h4>
+                            <p>Built with <strong>Python & Flask</strong>, using <strong>SQLAlchemy</strong> for the database and <strong>OMDb API</strong> for real-time movie data.</p>
+                        </div>
+                    </div>
+
+                    <h4 class="text-info mt-4"><i class="bi bi-code-slash me-2"></i>How it works</h4>
+                    <p>When you add a movie, the app communicates with a global movie database, fetches the director, release year, and poster, and stores it specifically for your user profile.</p>
+
+                    <div class="mt-5 pt-3 border-top border-secondary">
+                        <a href="{{ url_for('index') }}" class="btn btn-outline-info">
+                            <i class="bi bi-arrow-left me-1"></i> Back to Movie Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
